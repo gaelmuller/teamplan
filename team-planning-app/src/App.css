@@ -1,0 +1,264 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Calendar Styles */
+.calendar-container {
+  margin-top: 20px;
+  overflow-x: auto; /* For horizontal scrolling if needed */
+}
+
+.calendar-header {
+  display: grid;
+  /* 1fr for team name column, then 7fr for days */
+  grid-template-columns: 1fr repeat(7, 1fr); 
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.calendar-header-cell {
+  padding: 5px;
+}
+
+.calendar-grid { /* This is for the global events part of the calendar */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(100px, auto); /* Each cell will be at least 100px tall */
+  /* border-left: 1px solid #eee; */ /* Border handled by global-calendar-row if needed */
+  border-top: 1px solid #eee;
+}
+
+.calendar-day-cell {
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 5px;
+  min-width: 120px; /* Ensure cells have some width */
+}
+
+.global-day-cell { /* Specific styling for day cells in the global row if different */
+  /* Inherits .calendar-day-cell, add specifics if any */
+}
+
+
+/* Global Calendar Row Styling */
+.global-calendar-row {
+  display: grid;
+  grid-template-columns: 1fr repeat(7, 1fr); /* Team name label + 7 day cells */
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.global-events-label {
+  padding: 10px 5px;
+  font-weight: bold;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  background-color: #f8f9fa; /* Light background for the 'Global' label cell */
+}
+
+.global-events-grid {
+  grid-column: 2 / span 7; /* Make the grid take up the 7 day columns */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  /* border-top: 1px solid #eee; No, this is handled by global-calendar-row */
+}
+
+
+/* Team Member List specific styles - from previous step, ensure they are not overwritten */
+.team-member-list {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.team-member {
+  padding: 8px;
+  margin-bottom: 5px;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 3px;
+}
+
+/* Calendar Day Cell Content */
+.calendar-day-cell .day-number {
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.calendar-day-cell .events-in-cell {
+  font-size: 0.8em;
+  text-align: left;
+}
+
+.event-item {
+  padding: 3px;
+  margin-bottom: 3px;
+  border-radius: 3px;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.event-item.event {
+  background-color: #2196F3; /* Blue for general events */
+  border: 1px solid #1976D2;
+}
+
+.event-item.pto {
+  background-color: #4CAF50; /* Green for PTO */
+  border: 1px solid #388E3C;
+}
+
+/* Team Assignment Calendar Styles */
+.team-member-name-header-cell {
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  background-color: #f8f9fa; /* Light background for the 'Team' header cell */
+}
+
+.team-assignments-container {
+  /* Container for all team member rows */
+}
+
+.team-member-row {
+  display: grid;
+  grid-template-columns: 1fr repeat(7, 1fr); /* Name column + 7 day cells */
+  border-bottom: 1px solid #eee; /* Separator line between team members */
+}
+
+.team-member-name-cell {
+  padding: 10px 5px; /* More padding for names */
+  font-weight: bold;
+  border-right: 1px solid #ccc;
+  background-color: #f8f9fa; /* Light background for name cells */
+  display: flex;
+  align-items: center; /* Vertically center name if row is tall */
+  /* text-align: left; (default) */
+}
+
+.assignment-grid {
+  grid-column: 2 / span 7; /* Make the grid take up the 7 day columns */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.assignment-cell {
+  min-height: 50px; /* Height for assignment cells */
+  padding: 5px;
+  border-right: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; /* Already handled by team-member-row's border-bottom */
+  cursor: pointer;
+  font-size: 0.75em; /* Smaller font for project name */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333; /* Default text color for project name if background is light */
+  position: relative; /* For absolute positioning of drag handle */
+}
+
+.assignment-cell.assigned {
+  /* Base style for any assigned cell - project color is applied inline */
+  color: white; /* Assuming project colors are dark enough for white text */
+}
+
+.assignment-cell .project-name-display {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 2px; /* Small padding around the name */
+  z-index: 1; /* Ensure text is above potential pseudo-elements */
+}
+
+
+.assignment-cell.start-date {
+  /* Specific style for the first cell of an assignment if needed */
+  /* Example: border-left: 2px solid darkblue; */
+}
+
+.assignment-cell.end-date {
+  /* Specific style for the last cell of an assignment if needed */
+  /* Example: border-right: 2px solid darkblue; */
+}
+
+.assignment-drag-handle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 10px; /* Width of the handle */
+  cursor: col-resize; /* Cursor indicating horizontal resize */
+  /* background-color: rgba(0, 0, 0, 0.1); Optional: subtle background for handle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2; /* Ensure handle is clickable above other content */
+}
+
+.assignment-drag-handle::after {
+  content: '||'; /* Simple visual representation of a handle */
+  font-size: 10px;
+  color: rgba(0,0,0,0.3);
+  transform: rotate(90deg); /* Vertical dots/lines */
+}
+
+
+.assignment-cell:not(.assigned):hover { /* Apply hover only to non-assigned cells */
+  background-color: #e9ecef; /* Light hover effect for empty cells */
+}
+
+/* Ensure the last cell in a row doesn't have a right border if it's the edge of the calendar */
+.assignment-grid .assignment-cell:last-child {
+  border-right: none;
+}
+.calendar-header .calendar-header-cell:last-child {
+   /* border-right: none; /* If calendar-container has its own border */
+}
+.global-events-grid .calendar-day-cell:last-child {
+   /* border-right: none; */
+}
