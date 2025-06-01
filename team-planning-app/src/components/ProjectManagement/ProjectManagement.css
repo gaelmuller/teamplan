@@ -1,0 +1,20 @@
+.project-management .add-project {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center; /* Align input and button */
+  gap: 10px; /* Space between input and button */
+}
+.project-management .add-project input[type='text'] {
+  flex-grow: 1; /* Allow input to take available space */
+  margin-right: 0; /* Remove individual margin */
+}
+.project-management ul li button.delete-btn {
+    padding: 6px 10px; /* Slightly smaller delete buttons in lists */
+    font-size: 0.85em;
+}
+/* Add a message for empty project list */
+.project-management ul p {
+    color: #6c757d; /* Bootstrap's text-muted color */
+    font-style: italic;
+    padding: 10px 0;
+}

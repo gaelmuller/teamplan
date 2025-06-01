@@ -1,0 +1,14 @@
+.team-management .add-member {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center; /* Align input and button */
+  gap: 10px; /* Space between input and button */
+}
+.team-management .add-member input[type='text'] {
+  flex-grow: 1; /* Allow input to take available space */
+  margin-right: 0; /* Remove individual margin */
+}
+.team-management ul li button.delete-btn {
+    padding: 6px 10px; /* Slightly smaller delete buttons in lists */
+    font-size: 0.85em;
+}

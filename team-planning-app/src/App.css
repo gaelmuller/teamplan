@@ -1,0 +1,185 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  background-color: #f4f7f6; /* Light gray background for the page */
+  color: #333;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #004085; /* Darker, more professional blue */
+  padding: 20px;
+  color: white;
+  margin-bottom: 30px; /* Increased margin */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+  display: flex; /* For aligning title and import/export */
+  justify-content: space-between; /* Puts title left, buttons right */
+  align-items: center; /* Vertical alignment */
+}
+
+.App-header h1 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.8em;
+}
+
+.management-sections {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  padding: 0 20px; /* Add horizontal padding to the container */
+  gap: 20px; /* Adds space between flex items */
+}
+
+/* General styles for management sections */
+.team-management, .project-management {
+  padding: 20px;
+  border: 1px solid #ddd; /* Lighter border */
+  border-radius: 8px; /* More rounded corners */
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Subtle shadow */
+  flex: 1; /* Allow them to grow equally */
+  min-width: 300px; /* Maintain a minimum width */
+}
+
+.team-management h2, .project-management h2 {
+  margin-top: 0;
+  color: #004085; /* Match header blue */
+  border-bottom: 2px solid #eee; /* Slightly thicker border */
+  padding-bottom: 10px;
+  font-size: 1.4em;
+}
+
+.team-management input[type='text'],
+.project-management input[type='text'],
+.add-assignment-form select,
+.add-assignment-form input[type='date'] {
+  padding: 10px; /* Increased padding */
+  margin-right: 8px;
+  border: 1px solid #ccc; /* Slightly darker border for inputs */
+  border-radius: 4px;
+  font-size: 0.95em;
+  box-sizing: border-box; /* Ensure padding doesn't expand width */
+  margin-bottom: 10px; /* Space below inputs */
+}
+
+.team-management button,
+.project-management button,
+.add-assignment-form button {
+  padding: 10px 15px; /* Adjusted padding */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95em;
+  transition: background-color 0.2s ease-in-out; /* Smooth transition */
+}
+
+/* Specific button colors */
+.team-management .add-member button,
+.project-management .add-project button {
+  background-color: #007bff; /* Standard blue for add */
+}
+.team-management .add-member button:hover,
+.project-management .add-project button:hover {
+  background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color: #dc3545 !important;
+  margin-left: 10px;
+}
+.delete-btn:hover {
+  background-color: #c82333 !important;
+}
+
+.team-management ul, .project-management ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 15px; /* Space above list */
+}
+
+.team-management li, .project-management li {
+  padding: 10px 5px; /* Adjusted padding */
+  border-bottom: 1px solid #f0f0f0; /* Lighter list item separator */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95em;
+}
+
+.team-management li:last-child, .project-management li:last-child {
+  border-bottom: none;
+}
+
+/* Import/Export Buttons Styling */
+.import-export-buttons {
+  /* margin-top: 10px; Already handled by App-header flex */
+  /* margin-bottom: 10px; */
+}
+
+.import-export-buttons button,
+.import-export-buttons .button-like {
+  background-color: #5cb85c; /* Green for import/export */
+  color: white;
+  padding: 8px 12px; /* Slightly smaller for header */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 0.9em;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.import-export-buttons button:hover,
+.import-export-buttons .button-like:hover {
+  background-color: #4cae4c; /* Darker green */
+}
+
+/* Add Assignment Form Styling */
+.add-assignment-form {
+  padding: 20px;
+  background-color: #ffffff;
+  margin: 0 20px 30px 20px; /* Add horizontal margin like management-sections */
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.add-assignment-form h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #004085; /* Match header blue */
+    font-size: 1.4em;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+.add-assignment-form form {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  align-items: center;
+  gap: 10px; /* Space between form elements */
+}
+.add-assignment-form select,
+.add-assignment-form input[type='date'],
+.add-assignment-form button {
+  margin-right: 0; /* Remove individual right margin, use gap instead */
+  margin-bottom: 0; /* Remove individual bottom margin for flex alignment */
+}
+.add-assignment-form button {
+  background-color: #28a745; /* Green for add assignment */
+}
+.add-assignment-form button:hover {
+  background-color: #218838;
+}
+
+main {
+  padding: 0 10px; /* Add some padding to main content area */
+}
